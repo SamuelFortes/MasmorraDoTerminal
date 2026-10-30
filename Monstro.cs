@@ -7,19 +7,20 @@ class Monstro
 
     public void Atacar(Heroi heroi)
     {
-        Console.WriteLine($"O monstro {Nome} irá atacar o herói {heroi.Nome} e seu ataque causará {Ataque} de dano!");
         if(Ataque > heroi.Defesa)
         {
-            heroi.ReceberDano(Ataque);
+            Console.WriteLine($"O monstro {Nome} irá atacar o herói {heroi.Nome} e seu ataque causará {Ataque - heroi.Defesa} de dano!");
+            heroi.ReceberDano(Ataque - heroi.Defesa);
         }
         else if (Ataque < heroi.Defesa)
         {
-            heroi.ReceberDano(heroi.Defesa - Ataque);
+            Console.WriteLine($"O monstro {Nome} irá atacar o herói {heroi.Nome} e seu ataque causará 0 de dano!, o {heroi.Nome} defendeu");
+            heroi.ReceberDano(0);
         }
         else
         {
+            Console.WriteLine($"O ataque do monstro {Nome} não surtiu nenhum efeito! ambos possuem a mesma força");
             heroi.ReceberDano(0);
-            Console.WriteLine($"O ataque não surtiu nenhum efeito!");
         }
         Thread.Sleep(2);
     }

@@ -9,8 +9,8 @@ heroiSamuel.ExibirFichaHeroi();
 Monstro monstroGigante = new Monstro();
 monstroGigante.Nome = "Monstro Gigante";
 monstroGigante.Vida = 40;
-monstroGigante.Ataque = 20;
-monstroGigante.Defesa = 20;
+monstroGigante.Ataque = 15;
+monstroGigante.Defesa = 15;
 
 // luta
 
@@ -29,6 +29,12 @@ void Batalha(Heroi heroi, Monstro monstro)
         if(heroi.Vida <= 0)
         {
             Console.WriteLine($"A batalha se encerrou, o vencendor foi {monstro.Nome}!");
+            break;
+        }
+
+        if((heroi.Ataque == monstro.Defesa) || (monstro.Ataque == heroi.Defesa))
+        {
+            Console.WriteLine("Como ambos possuem a mesma força, então a batalha será encerrada!");
             break;
         }
         
