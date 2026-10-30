@@ -12,5 +12,27 @@ monstroGigante.Vida = 40;
 monstroGigante.Ataque = 20;
 monstroGigante.Defesa = 20;
 
-heroiSamuel.Atacar(monstroGigante);
-monstroGigante.Atacar(heroiSamuel);
+// luta
+
+void Batalha(Heroi heroi, Monstro monstro)
+{
+    Console.WriteLine($"Uma batalha entre {heroi.Nome} e {monstro.Nome} irá se iniciar!");
+    while (true)
+    {
+        heroi.Atacar(monstro);
+        if(monstro.Vida <= 0)
+        {
+            Console.WriteLine($"A batalha se encerrou, o vencendor foi {heroi.Nome}!");
+            break;
+        }
+        monstro.Atacar(heroi);
+        if(heroi.Vida <= 0)
+        {
+            Console.WriteLine($"A batalha se encerrou, o vencendor foi {monstro.Nome}!");
+            break;
+        }
+        
+    }
+}
+
+Batalha(heroiSamuel, monstroGigante);
