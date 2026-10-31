@@ -21,11 +21,11 @@ class Monstro
             Vida -= ataqueDoHeroi - Defesa;
             if(Vida < 0)
             {
-                Console.WriteLine($"Pts de vida atuais do herói {Nome}: 0");
+                Console.WriteLine($"Pts de vida atuais do monstro {Nome}: 0");
             }
             else
             {
-                Console.WriteLine($"Pts de vida atuais do herói {Nome}: {Vida}");
+                Console.WriteLine($"Pts de vida atuais do monstro {Nome}: {Vida}");
             }
             Thread.Sleep(2);
         }
