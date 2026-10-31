@@ -1,9 +1,14 @@
 class Heroi
 {
     public string Nome { get; set; }
-    public int Vida { get; set; }
+    public int Vida
+    {
+        get => _vida;
+    }
+    private int _vida;
     public int Ataque { get; set; }
     public int Defesa { get; set; }
+    public bool EstaVivo { get; set; }
 
     public void Atacar(Monstro monstro)
     {
@@ -19,7 +24,7 @@ class Heroi
         if(ataqueDoMonstro > Defesa)
         {
             Console.WriteLine($"O monstro {nomeDoMonstro} irá atacar o herói {Nome} e seu ataque causará {ataqueDoMonstro - Defesa} de dano!");
-            Vida -= ataqueDoMonstro - Defesa;
+            _vida -= ((_vida - (ataqueDoMonstro - Defesa)) <= 0) ? 0 : ataqueDoMonstro - Defesa;
             if(Vida < 0)
             {
                 Console.WriteLine($"Pts de vida atuais do herói {Nome}: 0");
