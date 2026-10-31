@@ -1,7 +1,7 @@
 ﻿Heroi heroiSamuel = new Heroi();
 heroiSamuel.Nome = "Samuel";
 heroiSamuel.Vida = 20;
-heroiSamuel.Ataque = 25;
+heroiSamuel.Ataque = 10;
 heroiSamuel.Defesa = 15;
 
 heroiSamuel.ExibirFichaHeroi();
@@ -9,7 +9,7 @@ heroiSamuel.ExibirFichaHeroi();
 Monstro monstroGigante = new Monstro();
 monstroGigante.Nome = "Monstro Gigante";
 monstroGigante.Vida = 40;
-monstroGigante.Ataque = 15;
+monstroGigante.Ataque = 10;
 monstroGigante.Defesa = 20;
 
 // luta
@@ -32,7 +32,7 @@ void Batalha(Heroi heroi, Monstro monstro)
             break;
         }
 
-        if((heroi.Ataque == monstro.Defesa) && (monstro.Ataque == heroi.Defesa))
+        if((heroi.Ataque <= monstro.Defesa) && (monstro.Ataque <= heroi.Defesa))
         {
             Console.WriteLine("Como ambos possuem a mesma força, então a batalha será encerrada!");
             break;
