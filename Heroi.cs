@@ -18,8 +18,8 @@ class Heroi
 
         if(ataqueDoMonstro > Defesa)
         {
-            Console.WriteLine($"O monstro {nomeDoMonstro} irá atacar o herói {Nome} e seu ataque causará {ataqueDoMonstro} de dano!");
-            Vida -= ataqueDoMonstro;
+            Console.WriteLine($"O monstro {nomeDoMonstro} irá atacar o herói {Nome} e seu ataque causará {ataqueDoMonstro - Defesa} de dano!");
+            Vida -= ataqueDoMonstro - Defesa;
             if(Vida < 0)
             {
                 Console.WriteLine($"Pts de vida atuais do herói {Nome}: 0");
