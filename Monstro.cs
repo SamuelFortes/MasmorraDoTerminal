@@ -7,29 +7,38 @@ class Monstro
 
     public void Atacar(Heroi heroi)
     {
-        if(Ataque > heroi.Defesa)
+        int ataqueDoMonstro = Ataque;
+        string nomeDoMonstro = Nome;
+        Console.WriteLine($"O monstro {Nome} irá atacar agora!");
+        heroi.ReceberDano(ataqueDoMonstro, nomeDoMonstro);
+    }
+
+    public void ReceberDano(int ataqueDoHeroi, string nomeDoHeroi)
+    {
+        if(ataqueDoHeroi > Defesa)
         {
-            Console.WriteLine($"O monstro {Nome} irá atacar o herói {heroi.Nome} e seu ataque causará {Ataque - heroi.Defesa} de dano!");
-            heroi.ReceberDano(Ataque - heroi.Defesa);
+            Console.WriteLine($"O herói {nomeDoHeroi} irá atacar o monstro {Nome} e seu ataque causará {ataqueDoHeroi} de dano!");
+            Vida -= ataqueDoHeroi;
+            if(Vida < 0)
+            {
+                Console.WriteLine($"Pts de vida atuais do herói {Nome}: 0");
+            }
+            else
+            {
+                Console.WriteLine($"Pts de vida atuais do herói {Nome}: {Vida}");
+            }
+            Thread.Sleep(2);
         }
-        else if (Ataque < heroi.Defesa)
+        else if (ataqueDoHeroi < Defesa)
         {
-            Console.WriteLine($"O monstro {Nome} irá atacar o herói {heroi.Nome} e seu ataque causará 0 de dano!, o {heroi.Nome} defendeu");
-            heroi.ReceberDano(0);
+            Console.WriteLine($"O herói {nomeDoHeroi} irá atacar o monstro {Nome} e seu ataque causará 0 de dano!, {Nome} defendeu");
+            Thread.Sleep(2);
         }
         else
         {
-            Console.WriteLine($"O ataque do monstro {Nome} não surtiu nenhum efeito! ambos possuem a mesma força");
-            heroi.ReceberDano(0);
+            Console.WriteLine($"O ataque do herói {nomeDoHeroi} não surtiu nenhum efeito! ambos possuem a mesma força");
+            Thread.Sleep(2);
         }
-        Thread.Sleep(2);
-    }
-
-    public void ReceberDano(int ataque)
-    {
-        Vida -= ataque;
-        Console.WriteLine($"Pts de vida atuais do monstro {Nome}: {Vida}");
-        Thread.Sleep(2);
 
         if(Vida <= 0)
         {
