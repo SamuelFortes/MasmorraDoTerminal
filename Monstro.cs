@@ -25,10 +25,8 @@ class Monstro
 
     public void Atacar(Heroi heroi)
     {
-        int ataqueDoMonstro = Ataque;
-        string nomeDoMonstro = Nome;
         Console.WriteLine($"O monstro {Nome} irá atacar agora!");
-        heroi.ReceberDano(ataqueDoMonstro, nomeDoMonstro);
+        heroi.ReceberDano(Ataque, Nome);
     }
 
     public void ReceberDano(int ataqueDoHeroi, string nomeDoHeroi)

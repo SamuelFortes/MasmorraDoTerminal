@@ -18,13 +18,13 @@ void Batalha(Heroi heroi, Monstro monstro)
         heroi.Atacar(monstro);
         if(!monstro.EstaVivo)
         {
-            Console.WriteLine($"A batalha se encerrou, o vencendor foi {heroi.Nome}!");
+            Console.WriteLine($"A batalha se encerrou, o vencedor foi {heroi.Nome}!");
             break;
         }
         monstro.Atacar(heroi);
         if(!heroi.EstaVivo)
         {
-            Console.WriteLine($"A batalha se encerrou, o vencendor foi {monstro.Nome}!");
+            Console.WriteLine($"A batalha se encerrou, o vencedor foi {monstro.Nome}!");
             break;
         }
 
