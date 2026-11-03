@@ -28,7 +28,7 @@ void Batalha(Heroi heroi, Monstro monstro)
             break;
         }
 
-        heroiSamuel.Curar(1);
+        heroi.Curar(1);
 
         if((heroi.Ataque <= monstro.Defesa) && (monstro.Ataque <= heroi.Defesa))
         {
