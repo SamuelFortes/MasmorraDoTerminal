@@ -9,6 +9,7 @@ class Heroi
     public int Ataque { get; set; }
     public bool EstaVivo => (Vida <= 0) ? false : true;
     public int Defesa { get; set; }
+    public Inventario Inventario { get; set; }
 
     public Heroi(string nome, int vida)
     {
