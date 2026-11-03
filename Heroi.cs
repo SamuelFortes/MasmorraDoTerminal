@@ -39,7 +39,7 @@ class Heroi
         {
             Console.WriteLine($"O monstro {nomeDoMonstro} irá atacar o herói {Nome} e seu ataque causará {ataqueDoMonstro - Defesa} de dano!");
             _vida -= ((_vida - (ataqueDoMonstro - Defesa)) <= 0) ? _vida : ataqueDoMonstro - Defesa;
-            if(Vida < 0)
+            if(!EstaVivo)
             {
                 Console.WriteLine($"Pts de vida atuais do herói {Nome}: 0");
             }
@@ -62,18 +62,18 @@ class Heroi
 
         if(!EstaVivo)
             {
-                Console.WriteLine($"O monstro {Nome} caiu!");
+                Console.WriteLine($"O herói {Nome} caiu!");
             }
     }
 
-    public void Curar(int ptsDeCura)
+    public void Curar(int ptsDeCura, Heroi heroi)
     {
-        bool curarSemPassarLimite = (_vida + ptsDeCura > 100) ? false : true;
+        bool curarSemPassarLimite = (heroi.Vida + ptsDeCura > 100) ? false : true;
         if(ptsDeCura >= 1 && curarSemPassarLimite)
         {
             _vida += ptsDeCura;
-            Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
-            Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
+            Console.WriteLine($"{heroi.Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
+            Console.WriteLine($"Pts de vida atuais do {heroi.Nome}: {heroi.Vida}");
         }
         
     }
