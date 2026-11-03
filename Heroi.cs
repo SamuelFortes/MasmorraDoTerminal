@@ -8,7 +8,23 @@ class Heroi
     private int _vida;
     public int Ataque { get; set; }
     public int Defesa { get; set; }
-    public bool EstaVivo { get; set; }
+    public bool EstaVivo
+    {
+        get => _estaVivo;
+
+        set
+        {
+            if(_vida <= 0)
+            {
+                _estaVivo = false;
+            }
+            else
+            {
+                _estaVivo = true;
+            }
+        }
+    }
+    private bool _estaVivo;
 
     public void Atacar(Monstro monstro)
     {
@@ -24,7 +40,7 @@ class Heroi
         if(ataqueDoMonstro > Defesa)
         {
             Console.WriteLine($"O monstro {nomeDoMonstro} irá atacar o herói {Nome} e seu ataque causará {ataqueDoMonstro - Defesa} de dano!");
-            _vida -= ((_vida - (ataqueDoMonstro - Defesa)) <= 0) ? 0 : ataqueDoMonstro - Defesa;
+            _vida -= ((_vida - (ataqueDoMonstro - Defesa)) <= 0) ? _vida : ataqueDoMonstro - Defesa;
             if(Vida < 0)
             {
                 Console.WriteLine($"Pts de vida atuais do herói {Nome}: 0");
@@ -47,9 +63,34 @@ class Heroi
         }
 
         if(Vida <= 0)
+            {
+                _estaVivo = false;
+                Console.WriteLine($"O monstro {Nome} caiu!");
+            }
+            else
+            {
+                _estaVivo = true;
+            }
+    }
+
+    public void AdiconarPtsDeVida(int ptsDeVida)
+    {
+        if(ptsDeVida <= 100)
         {
-            Console.WriteLine($"O herói {Nome} caiu!");
+            _vida = ptsDeVida;
         }
+        else
+        {
+            Console.WriteLine("A quantidade máxima de pontos de vida que um personagem pode receber é de 100 pts");
+        }
+        
+    }
+
+    public void Curar(int ptsDeCura)
+    {
+        _vida += ptsDeCura;
+        Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
+        Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
     }
 
     public void ExibirFichaHeroi()

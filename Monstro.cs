@@ -8,7 +8,23 @@ class Monstro
     private int _vida;
     public int Ataque { get; set; }
     public int Defesa { get; set; }
-    public bool EstaVivo { get; set; }
+    public bool EstaVivo
+    {
+        get => _estaVivo;
+
+        set
+        {
+            if(_vida <= 0)
+            {
+                _estaVivo = false;
+            }
+            else
+            {
+                _estaVivo = true;
+            }
+        }
+    }
+    private bool _estaVivo;
 
     public void Atacar(Heroi heroi)
     {
@@ -16,6 +32,18 @@ class Monstro
         string nomeDoMonstro = Nome;
         Console.WriteLine($"O monstro {Nome} irá atacar agora!");
         heroi.ReceberDano(ataqueDoMonstro, nomeDoMonstro);
+    }
+
+public void AdiconarPtsDeVida(int ptsDeVida)
+    {
+        if(ptsDeVida <= 100)
+        {
+            _vida = ptsDeVida;
+        }
+        else
+        {
+            Console.WriteLine("A quantidade máxima de pontos de vida que um personagem pode receber é de 100 pts");
+        };
     }
 
     public void ReceberDano(int ataqueDoHeroi, string nomeDoHeroi)
@@ -46,8 +74,20 @@ class Monstro
         }
 
         if(Vida <= 0)
-        {
-            Console.WriteLine($"O monstro {Nome} caiu!");
-        }
+            {
+                _estaVivo = false;
+                Console.WriteLine($"O monstro {Nome} caiu!");
+            }
+            else
+            {
+                _estaVivo = true;
+            }
+    }
+
+    public void Curar(int ptsDeCura)
+    {
+        _vida += ptsDeCura;
+        Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura !");
+        Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
     }
 }

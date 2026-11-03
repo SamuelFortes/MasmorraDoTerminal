@@ -1,14 +1,14 @@
 ﻿Heroi heroiSamuel = new Heroi();
 heroiSamuel.Nome = "Samuel";
-heroiSamuel.Vida = 20;
+heroiSamuel.AdiconarPtsDeVida(11);
 heroiSamuel.Ataque = 10;
-heroiSamuel.Defesa = 15;
+heroiSamuel.Defesa = 0;
 
 heroiSamuel.ExibirFichaHeroi();
 
 Monstro monstroGigante = new Monstro();
 monstroGigante.Nome = "Monstro Gigante";
-monstroGigante.Vida = 40;
+monstroGigante.AdiconarPtsDeVida(40);
 monstroGigante.Ataque = 10;
 monstroGigante.Defesa = 20;
 
@@ -31,6 +31,8 @@ void Batalha(Heroi heroi, Monstro monstro)
             Console.WriteLine($"A batalha se encerrou, o vencendor foi {monstro.Nome}!");
             break;
         }
+
+        heroiSamuel.Curar(1);
 
         if((heroi.Ataque <= monstro.Defesa) && (monstro.Ataque <= heroi.Defesa))
         {
