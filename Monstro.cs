@@ -8,12 +8,7 @@ class Monstro
     private int _vida;
     public int Ataque { get; set; }
     public int Defesa { get; set; }
-    public bool EstaVivo
-    {
-        get => _estaVivo;
-    }
-    private bool _estaVivo;
-
+    public bool EstaVivo => (Vida <= 0) ? false : true;
     public Monstro(string nome, int vida)
     {
         Nome = nome;
@@ -63,14 +58,9 @@ class Monstro
             Thread.Sleep(2);
         }
 
-        if(Vida <= 0)
+        if(!EstaVivo)
             {
-                _estaVivo = false;
                 Console.WriteLine($"O monstro {Nome} caiu!");
-            }
-            else
-            {
-                _estaVivo = true;
             }
     }
 
