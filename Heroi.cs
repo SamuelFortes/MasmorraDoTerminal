@@ -66,14 +66,14 @@ class Heroi
             }
     }
 
-    public void Curar(int ptsDeCura, Heroi heroi)
+    public void Curar(int ptsDeCura)
     {
-        bool curarSemPassarLimite = (heroi.Vida + ptsDeCura > 100) ? false : true;
-        if(ptsDeCura >= 1 && curarSemPassarLimite)
+        bool curarSemPassarLimite = (Vida + ptsDeCura > 100) ? false : true;
+        if(ptsDeCura >= 1 && curarSemPassarLimite && EstaVivo)
         {
             _vida += ptsDeCura;
-            Console.WriteLine($"{heroi.Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
-            Console.WriteLine($"Pts de vida atuais do {heroi.Nome}: {heroi.Vida}");
+            Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
+            Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
         }
         
     }

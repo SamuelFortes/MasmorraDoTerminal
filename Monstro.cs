@@ -64,14 +64,14 @@ class Monstro
             }
     }
 
-    public void Curar(int ptsDeCura, Monstro monstro)
+    public void Curar(int ptsDeCura)
     {
-        bool curarSemPassarLimite = (monstro.Vida + ptsDeCura > 100) ? false : true;
-        if(ptsDeCura >= 1 && curarSemPassarLimite && monstro.EstaVivo)
+        bool curarSemPassarLimite = (Vida + ptsDeCura > 100) ? false : true;
+        if(ptsDeCura >= 1 && curarSemPassarLimite && EstaVivo)
         {
             _vida += ptsDeCura;
-            Console.WriteLine($"{monstro.Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
-            Console.WriteLine($"Pts de vida atuais do {monstro.Nome}: {monstro.Vida}");
+            Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
+            Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
         }
         
     }
