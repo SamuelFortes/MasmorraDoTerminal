@@ -1,14 +1,10 @@
-﻿Heroi heroiSamuel = new Heroi();
-heroiSamuel.Nome = "Samuel";
-heroiSamuel.AdiconarPtsDeVida(11);
+﻿Heroi heroiSamuel = new Heroi("Samuel", 11);
 heroiSamuel.Ataque = 10;
 heroiSamuel.Defesa = 0;
 
 heroiSamuel.ExibirFichaHeroi();
 
-Monstro monstroGigante = new Monstro();
-monstroGigante.Nome = "Monstro Gigante";
-monstroGigante.AdiconarPtsDeVida(40);
+Monstro monstroGigante = new Monstro("Monstro Gigante", 40);
 monstroGigante.Ataque = 10;
 monstroGigante.Defesa = 20;
 

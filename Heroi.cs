@@ -11,20 +11,22 @@ class Heroi
     public bool EstaVivo
     {
         get => _estaVivo;
-
-        set
-        {
-            if(_vida <= 0)
-            {
-                _estaVivo = false;
-            }
-            else
-            {
-                _estaVivo = true;
-            }
-        }
     }
     private bool _estaVivo;
+
+    public Heroi(string nome, int vida)
+    {
+        Nome = nome;
+
+        if(vida <= 100 && vida >= 0)
+        {
+            _vida = vida;
+        }
+        else
+        {
+            Console.WriteLine("A quantidade máxima de pontos de vida que um personagem pode receber é de 100 pts e um personagem não pode ter pontos de vida negativos");
+        }
+    }
 
     public void Atacar(Monstro monstro)
     {
@@ -73,24 +75,16 @@ class Heroi
             }
     }
 
-    public void AdiconarPtsDeVida(int ptsDeVida)
-    {
-        if(ptsDeVida <= 100)
-        {
-            _vida = ptsDeVida;
-        }
-        else
-        {
-            Console.WriteLine("A quantidade máxima de pontos de vida que um personagem pode receber é de 100 pts");
-        }
-        
-    }
-
     public void Curar(int ptsDeCura)
     {
-        _vida += ptsDeCura;
-        Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
-        Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
+        bool curarSemPassarLimite = (_vida + ptsDeCura > 100) ? false : true;
+        if(ptsDeCura >= 1 && curarSemPassarLimite)
+        {
+            _vida += ptsDeCura;
+            Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
+            Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
+        }
+        
     }
 
     public void ExibirFichaHeroi()

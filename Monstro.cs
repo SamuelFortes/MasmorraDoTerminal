@@ -11,20 +11,22 @@ class Monstro
     public bool EstaVivo
     {
         get => _estaVivo;
-
-        set
-        {
-            if(_vida <= 0)
-            {
-                _estaVivo = false;
-            }
-            else
-            {
-                _estaVivo = true;
-            }
-        }
     }
     private bool _estaVivo;
+
+    public Monstro(string nome, int vida)
+    {
+        Nome = nome;
+
+        if(vida <= 100 && vida >= 0)
+        {
+            _vida = vida;
+        }
+        else
+        {
+            Console.WriteLine("A quantidade máxima de pontos de vida que um personagem pode receber é de 100 pts e um personagem não pode ter pontos de vida negativos");
+        }
+    }
 
     public void Atacar(Heroi heroi)
     {
@@ -34,24 +36,12 @@ class Monstro
         heroi.ReceberDano(ataqueDoMonstro, nomeDoMonstro);
     }
 
-public void AdiconarPtsDeVida(int ptsDeVida)
-    {
-        if(ptsDeVida <= 100)
-        {
-            _vida = ptsDeVida;
-        }
-        else
-        {
-            Console.WriteLine("A quantidade máxima de pontos de vida que um personagem pode receber é de 100 pts");
-        };
-    }
-
     public void ReceberDano(int ataqueDoHeroi, string nomeDoHeroi)
     {
         if(ataqueDoHeroi > Defesa)
         {
             Console.WriteLine($"O herói {nomeDoHeroi} irá atacar o monstro {Nome} e seu ataque causará {ataqueDoHeroi - Defesa} de dano!");
-            _vida -= ((_vida - (ataqueDoHeroi - Defesa)) <= 0) ? 0 : ataqueDoHeroi - Defesa;
+            _vida -= ((_vida - (ataqueDoHeroi - Defesa)) <= 0) ? _vida : ataqueDoHeroi - Defesa;
             if(Vida < 0)
             {
                 Console.WriteLine($"Pts de vida atuais do monstro {Nome}: 0");
@@ -86,8 +76,13 @@ public void AdiconarPtsDeVida(int ptsDeVida)
 
     public void Curar(int ptsDeCura)
     {
-        _vida += ptsDeCura;
-        Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura !");
-        Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
+        bool curarSemPassarLimite = (_vida + ptsDeCura > 100) ? false : true;
+        if(ptsDeCura >= 1 && curarSemPassarLimite)
+        {
+            _vida += ptsDeCura;
+            Console.WriteLine($"{Nome} foi curado e recebeu {ptsDeCura} pts de cura!");
+            Console.WriteLine($"Pts de vida atuais do {Nome}: {Vida}");
+        }
+        
     }
 }
